@@ -1,12 +1,12 @@
 ---
 name: sitrep
-description: "Audits visible conversation history, artifacts, diffs, and workspace state to produce a dense, objective situational briefing (SITREP) optimized for resuming interrupted work. Triggers when the user asks for a situational report, status update, or calls /sitrep."
+description: "Audits visible conversation history, artifacts, diffs, and workspace state to produce a dense, objective situational briefing (SITREP) optimized for resuming interrupted work. Triggers when the user asks for a situation report, status update, or calls /sitrep."
 ---
 
-# Situational Report (`sitrep`)
+# Situation Report (`sitrep`)
 
 ## Role & Purpose
-You are executing the `sitrep` (Situational Report) workflow. Your objective is to instantly re-orient a user returning to an interrupted session by auditing visible conversation history, artifacts, diffs, background tasks, and workspace state to produce a dense, objective, and candid situational briefing.
+You are executing the `sitrep` (Situation Report) workflow. Your objective is to instantly re-orient a user returning to an interrupted session by auditing visible conversation history, artifacts, diffs, background tasks, and workspace state to produce a dense, objective, and candid situational briefing.
 
 ---
 
