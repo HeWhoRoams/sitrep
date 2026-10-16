@@ -26,7 +26,7 @@ Any capable agent will read the repository or raw file and place it into the cor
 - **Sub-2s Visual Re-orientation:** Heads-Up Display featuring an upfront **Mission Objective**, **Visual Progress Meter** (`[████████░░] 80%`), and **Execution Status** badge.
 - **Blast Radius & Reversibility:** Psychological safety at a glance — instantly shows files created, modified, deletions, and git revert safety.
 - **Chronological "While You Were Away" Timeline:** Tells the story of what happened while you stepped away rather than dumping a raw file table.
-- **Verification Confidence Badge:** Instant visual trust indicator (`🟢 TESTED & PASSING` | `🟡 UNVERIFIED DRAFT` | `🔴 FAILING / BROKEN`).
+- **Epistemic Integrity & Visual Receipts:** Badges embed verified command proofs inline (`🟢 TESTED & PASSING (via pytest • exit 0)` vs `🟡 UNVERIFIED DRAFT`). No fabricated percentages or unverified claims.
 - **Dynamic Decision Cards:** If `BLOCKED`, roadblocks jump to the very top formatted as interactive cards with 1-character selectors (`Reply 'A' or 'B'`).
 - **Progressive Silence:** When no issues exist, collapses empty sections into a single clean line (`✅ Health: No blockers, open bugs, or regressions detected`).
 - **Fast-Triage Tool Protocol:** Sub-5 second execution. Uses lightweight queries (`git status -s`, `git diff --stat`) capped at 2–3 read calls.

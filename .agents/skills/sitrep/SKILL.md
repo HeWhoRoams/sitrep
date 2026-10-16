@@ -6,7 +6,7 @@ description: "Audits visible conversation history, artifacts, diffs, and workspa
 # Situation Report (`sitrep`)
 
 ## Role & Purpose
-You are executing the `sitrep` (Situation Report) workflow. Your objective is to instantly re-orient a user returning to an interrupted session by auditing visible conversation history, artifacts, diffs, background tasks, and workspace state to produce an ergonomically scannable, objective, and candid situational briefing.
+You are executing the `sitrep` (Situation Report) workflow. Your objective is to instantly re-orient a user returning to an interrupted session by auditing visible conversation history, artifacts, diffs, background tasks, and workspace state to produce an ergonomically scannable, strictly grounded, and candid situational briefing.
 
 ---
 
@@ -19,9 +19,24 @@ You are executing the `sitrep` (Situation Report) workflow. Your objective is to
    - Keep response time under 5 seconds. Never dump verbose full `git diff` outputs into context; use `git diff --stat` or targeted line checks.
    - Limit tool calls to 2–3 rapid queries total. Do not read entire source files unless verifying an unverified edit.
 3. **Temporal Scope:** Focus the recap on all work accomplished since the user's last substantive directive or checkpoint, rather than strictly a single microscopic turn.
-4. **Grounding & Candor:** 
-   - Report facts directly. Never assume a file edit succeeded or an edge case works without observable evidence or verification logs.
-   - Highlight technical debt, brittle implementations, unverified assumptions, and regression risks immediately.
+
+---
+
+### Epistemic Integrity & Visual Receipts (Strict Grounding)
+Maintain 100% factual accuracy by embedding receipts cleanly at the visual layer (in badges, pills, and compact bullet metadata) so the UI remains sleek and uncluttered:
+
+1. **The "Receipts" Standard (No Unverified Claims):**
+   - Never claim `🟢 TESTED & PASSING` without embedding the exact verifiable command and exit code inline: e.g. `🟢 TESTED & PASSING (via pytest tests/auth/ • exit 0)`.
+   - If code was edited or created without running a test/build command in the transcript, strictly mark as `🟡 UNVERIFIED DRAFT (Code written, unexecuted)`.
+2. **Anti-Pseudometric Standard (No Fabricated Progress):**
+   - Never invent arbitrary completion percentages. Calculate progress ONLY against explicit checklist items (e.g. from a plan or prompt).
+   - If no formal checklist exists, report progress strictly by observable units: `Progress: In-flight ([N] verified actions taken)`.
+3. **Disk Truth vs. Chat Memory:**
+   - Every file reported as created or modified MUST appear in live `git status -s`. Never report conversational intent as completed work.
+4. **Surface Silent Pivots Cleanly:**
+   - Audit visible logs for non-zero tool exit codes. If an attempted approach failed and you pivoted, disclose it in one concise bullet (`⚠️ *Pivot:* [failed command] -> [fallback taken]`).
+5. **Side-Effect & Scope-Drift Check:**
+   - Briefly flag unprompted files modified by formatters, lockfile generators, or build tools (`📦 *Side-effects:* [e.g. package-lock.json modified]`).
 
 ---
 
@@ -32,7 +47,7 @@ If **no tool calls, code modifications, or background tasks** have occurred sinc
 # 🛰️ SITREP (Heartbeat — No State Change)
 - **Mission:** [1-sentence summary of active goal]
 - **Status:** 🟢 IDLE — No actions, edits, or commands executed since last turn.
-- **Workspace:** Clean | Branch: `[branch]` | Verification: `[🟢 Tested | 🟡 Draft | 🔴 Failing]`
+- **Workspace:** Clean | Branch: `[branch]` | Verification: `[🟢 Tested (via cmd) | 🟡 Draft | 🔴 Failing]`
 Awaiting instruction: Confirm next action or provide a new directive.
 ```
 
@@ -40,15 +55,15 @@ Awaiting instruction: Confirm next action or provide a new directive.
 
 ### UX-Optimized Output Specification
 
-Deliver the SITREP using the structured format below. Use terse, fact-dense bullet points. Format all file references as clickable links (e.g. `[filename](file:///path/to/file)` or `./relative/path`).
+Deliver the SITREP using the structured format below. Keep receipts embedded inline in badges and pills to maintain a clean visual hierarchy. Format all file references as clickable links (e.g. `[filename](file:///path/to/file)` or `./relative/path`).
 
 # 🛰️ SITREP
 
 **Mission:** [1-sentence summary of overall active objective]
-**Progress:** `[████████░░] N%` (Step X of Y: [Current Milestone Name])
-**Status:** [🟢 IDLE (Task complete) | ⏸️ PAUSED (Awaiting milestone review) | 🛑 BLOCKED (Decision required) | 💥 ERRORED (Failure encountered)] — [Reason]
-**Verification:** [🟢 TESTED & PASSING | 🟡 UNVERIFIED DRAFT | 🔴 FAILING / BROKEN]
-**Blast Radius:** [Low | Med | High] ([N] files created, [N] modified, [N] deletions | Git revert: [Safe / Dirty])
+**Progress:** `[████████░░] N%` (Step X of Y: [Milestone]) *(or: `In-flight ([N] verified actions taken)` if unchunked)*
+**Status:** [🟢 IDLE (Task complete) | ⏸️ PAUSED (Milestone review) | 🛑 BLOCKED (Decision required) | 💥 ERRORED (Failure encountered)] — [Reason]
+**Verification:** [🟢 TESTED & PASSING (via `[command]` • exit 0) | 🟡 UNVERIFIED DRAFT (Code written, unexecuted) | 🔴 FAILING (via `[command]` • exit [code])]
+**Blast Radius:** [Low | Med | High] ([N] created, [N] modified, [N] deletions | Git revert: [Safe / Dirty])
 **Workspace Pulse:** Branch: `[branch-name]` | Tasks: `[Active/completed background tasks & subagents, or 'None']`
 
 ---
@@ -63,9 +78,11 @@ Deliver the SITREP using the structured format below. Use terse, fact-dense bull
 ---
 
 ### ⏱️ While You Were Away
-Chronological narrative (2–4 bullets) of what was accomplished and verified since the user's last directive:
-- Micro-timeline of key milestones reached and commands validated with clean exit codes.
-- Specific files created or modified formatted as clickable links.
+Chronological narrative (2–4 bullets) of what was accomplished and verified since the user's last directive, grounded strictly in live disk and log evidence:
+- Specific files created or modified formatted as clickable links with change stats: `[filename](file:///...)` `(+N, -N)`.
+- Commands validated with clean exit codes: e.g. `[command]` (exit 0).
+- *(If applicable)* `⚠️ Pivot: Attempted [cmd] (exit [code]); switched to [workaround].`
+- *(If applicable)* `📦 Side-effects: [Unprompted files touched, e.g. lockfiles or cache].`
 *(If no work was completed: "No state changes detected in this segment.")*
 
 ---
@@ -76,7 +93,7 @@ Chronological narrative (2–4 bullets) of what was accomplished and verified si
   - **Known Bugs & Regressions:** Errors or failing tests observed during this session.
   - **Latent Risks & Misses:** Boundary conditions or omitted requirements.
 - **If NO issues exist:**
-  - Collapse all three above into this single line:
+  - Collapse all three above into this single clean line:
     `✅ Health: No blockers, open bugs, fragile assumptions, or regressions detected.`
 
 ---
