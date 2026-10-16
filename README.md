@@ -1,10 +1,10 @@
-# `sitrep` — Situational Report Skill
+# `sitrep` — Situation Report Skill
 
 Do you ever kick off a task in your AI Agent, come back hours later and wonder what the heck you were doing? Here's a solution.
 
-A lightweight, high-candor Situational Report (`sitrep`) workflow for AI coding assistants.
+A lightweight, high-candor Situation Report (`sitrep`) workflow for AI coding assistants.
 
-When invoked via `/sitrep` (or upon asking for a status report), the assistant audits recent conversation history, diffs, artifacts, and workspace state to produce a dense, objective, read-only situational briefing.
+When invoked via `/sitrep` (or upon asking for a status report), the assistant audits recent conversation history, diffs, artifacts, and workspace state to produce a dense, objective, read-only Situation briefing.
 
 ---
 
@@ -12,7 +12,7 @@ When invoked via `/sitrep` (or upon asking for a status report), the assistant a
 
 If you are already inside an AI coding assistant session, simply paste this prompt into the chat:
 
-> **"Install the `sitrep` skill from https://github.com/HeWhoRoams/sitrep so I can call `/sitrep` for situational reports."**
+> **"Install the `sitrep` skill from https://github.com/HeWhoRoams/sitrep so I can call `/sitrep` for Situation reports."**
 
 Or provide the raw skill file URL directly:
 > **"Fetch https://raw.githubusercontent.com/HeWhoRoams/sitrep/main/SKILL.md and save it as a skill/rule in this workspace so I can use `/sitrep`."**
@@ -172,7 +172,7 @@ Once installed, simply run:
 or ask:
 
 > "Give me a sitrep on where we are right now."
-> "Run a situational report before we proceed."
+> "Run a Situation report before we proceed."
 
-The agent will inspect your working tree and diffs using read-only tools and deliver a concise, fact-dense situational briefing concluding with:
+The agent will inspect your working tree and diffs using read-only tools and deliver a concise, fact-dense Situation briefing concluding with:
 `Awaiting instruction: Reply '1' to execute [Step 1 title], 'continue' to run immediate steps, or provide specific direction.`
