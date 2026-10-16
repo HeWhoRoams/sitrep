@@ -23,20 +23,16 @@ Any capable agent will read the repository or raw file and place it into the cor
 
 ## Features
 
-- **Instant Re-orientation:** Anchors the returning user with an upfront **Mission Objective**, **Execution Status** (why work paused or stopped), and a live **Workspace Pulse** (git tree, background tasks, and subagent jobs).
-- **Verification Confidence Badge:** Instant visual trust indicator (`🟢 TESTED & PASSING` | `🟡 UNVERIFIED DRAFT` | `🔴 FAILING / BROKEN`). Never assumes code works just because a file was edited.
-- **Fast-Triage Tool Protocol:** Sub-5 second execution. Uses lightweight queries (`git status -s`, `git diff --stat`) capped at 2–3 read calls. Never dumps thousands of lines of verbose diffs.
-- **Dynamic Blocker Promotion:** If the agent is `BLOCKED`, the roadblock and decision choices automatically jump to the very top.
-- **No-Change Short-Circuit:** If invoked with zero new state changes, returns a compact 4-line heartbeat card instead of a bloated empty template.
+- **Sub-2s Visual Re-orientation:** Heads-Up Display featuring an upfront **Mission Objective**, **Visual Progress Meter** (`[████████░░] 80%`), and **Execution Status** badge.
+- **Blast Radius & Reversibility:** Psychological safety at a glance — instantly shows files created, modified, deletions, and git revert safety.
+- **Chronological "While You Were Away" Timeline:** Tells the story of what happened while you stepped away rather than dumping a raw file table.
+- **Verification Confidence Badge:** Instant visual trust indicator (`🟢 TESTED & PASSING` | `🟡 UNVERIFIED DRAFT` | `🔴 FAILING / BROKEN`).
+- **Dynamic Decision Cards:** If `BLOCKED`, roadblocks jump to the very top formatted as interactive cards with 1-character selectors (`Reply 'A' or 'B'`).
+- **Progressive Silence:** When no issues exist, collapses empty sections into a single clean line (`✅ Health: No blockers, open bugs, or regressions detected`).
+- **Fast-Triage Tool Protocol:** Sub-5 second execution. Uses lightweight queries (`git status -s`, `git diff --stat`) capped at 2–3 read calls.
+- **No-Change Short-Circuit:** If invoked with zero new state changes, returns a compact 4-line heartbeat card.
 - **Strict Read-Only Safety:** Strictly audits state without mutating files, running builds, or executing application code.
 - **Zero-Friction Re-entry:** Numbers immediate next actions so you can resume work by replying with a single character (`1` or `continue`).
-- **Structured 6-Part Briefing:**
-  1. **Work Completed (While Away)**
-  2. **Low Confidence & Revisit List**
-  3. **Human Input Required (Blockers & Decisions)**
-  4. **Immediate Next (Tactical: Turn N+1)**
-  5. **Horizon Next (Strategic: Turns N+2 to N+5)**
-  6. **Gaps, Potential Misses & Regressions**
 
 ---
 
