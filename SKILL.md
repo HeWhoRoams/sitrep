@@ -1,21 +1,21 @@
 ---
 name: sitrep
-description: "Audits visible conversation history, artifacts, diffs, and workspace state to produce a dense, objective situational briefing (SITREP). Triggers when the user asks for a situational report, status update, or calls /sitrep."
+description: "Audits visible conversation history, artifacts, diffs, and workspace state to produce a dense, objective situational briefing (SITREP) optimized for resuming interrupted work. Triggers when the user asks for a situational report, status update, or calls /sitrep."
 ---
 
 # Situational Report (`sitrep`)
 
 ## Role & Purpose
-You are executing the `sitrep` (Situational Report) workflow. Your objective is to audit visible conversation history, artifacts, diffs, and workspace state to produce a dense, objective situational briefing.
+You are executing the `sitrep` (Situational Report) workflow. Your objective is to instantly re-orient a user returning to an interrupted session by auditing visible conversation history, artifacts, diffs, background tasks, and workspace state to produce a dense, objective, and candid situational briefing.
 
 ---
 
 ### Execution Boundary & Safety Rules
-1. **Inspection vs. Mutation:**
-   - **Permitted (Read-Only):** Use read-only tools (e.g., `git status`, `git diff`, file readers, test-runner queries, directory listings) strictly to verify file states and command outcomes.
+1. **Inspection vs. Mutation (Strictly Read-Only):**
+   - **Permitted (Read-Only):** Use read-only tools (`git status`, `git diff`, file readers, test status checks, task managers e.g. `manage_task list`, directory listings) strictly to verify file states, background processes, and command outcomes.
    - **Strictly Forbidden:** Do NOT write application code, apply patches, run destructive commands, install dependencies, or initiate execution tasks during this turn.
    - **Tool Absence Fallback:** If tool execution is unavailable or disabled, rely strictly on visible textual session context. Explicitly note: `[Environment verification: Static text context only; read-only tools unavailable]`.
-2. **Temporal Scope:** Focus "Recent Activity" on the immediate preceding working block (the last user directive and its resulting actions/tool runs), not the entire multi-turn session history.
+2. **Temporal Scope:** Focus "Work Completed" on all work accomplished since the user's last substantive directive or checkpoint, rather than strictly a single microscopic turn.
 3. **Grounding & Candor:** 
    - Report facts directly. Never assume a file edit succeeded or an edge case works without observable evidence or verification logs.
    - Highlight technical debt, brittle implementations, unverified assumptions, and regression risks immediately.
@@ -24,12 +24,20 @@ You are executing the `sitrep` (Situational Report) workflow. Your objective is 
 
 ### Output Specification
 
-Deliver the SITREP using the exact structural sections below. Use terse, fact-dense bullet points. Omit conversational intros, preamble, or meta-commentary.
+Deliver the SITREP using the exact structural format below. Use terse, fact-dense bullet points. Omit conversational intros, preamble, or meta-commentary.
 
-## 1. Recent Activity (Completed Work)
-- **Status:** Concrete tasks completed in the immediate prior cycle.
+# 🛰️ SITREP
+
+- **Mission:** [1-sentence summary of overall active objective and current progress/milestone]
+- **Execution Status:** [IDLE | BLOCKED | PAUSED | ERRORED] — [Exact reason execution stopped or paused]
+- **Workspace Pulse:** Branch: `[branch-name]` | Working Tree: `[N modified, N untracked, N staged]` | Tasks: `[Active background processes or 'None']`
+
+---
+
+## 1. Work Completed (While Away)
+- **Status:** Concrete tasks completed since the user's last directive.
 - **Verified Changes:** Specific files created/modified, configuration updates, or commands validated with clean exit codes.
-*(If no work was completed since last turn: "No state changes detected in this segment.")*
+*(If no work was completed: "No state changes detected in this segment.")*
 
 ## 2. Low Confidence & Revisit List
 Items completed or attempted that remain fragile, unverified, or reliant on assumptions. For each item:
@@ -45,7 +53,7 @@ Decisions or missing inputs that halt forward progress or branch architecture.
 *(If clear to proceed autonomously: "No immediate human blockers.")*
 
 ## 4. Immediate Next (Tactical: Turn N+1)
-Ordered list of 1–3 atomic, testable actions ready for execution immediately upon user approval. Each item must have a clear scope and expected outcome.
+Ordered list (1, 2, 3) of atomic, testable actions ready for immediate execution upon approval. Each item must have a clear scope and expected outcome.
 
 ## 5. Horizon Next (Strategic: Turns N+2 to N+5)
 High-level list (2–4 bullets) of downstream tasks, integration steps, or cleanup milestones to maintain alignment with the overall objective.
@@ -60,4 +68,4 @@ High-level list (2–4 bullets) of downstream tasks, integration steps, or clean
 
 ### Post-Report Handoff
 Conclude the response precisely with this single line:
-`Awaiting instruction: Confirm immediate next steps, provide input on listed items, or redirect focus.`
+`Awaiting instruction: Reply '1' to execute [Step 1 title], 'continue' to run immediate steps, or provide specific direction.`
