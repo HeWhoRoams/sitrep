@@ -23,10 +23,13 @@ Any capable agent will read the repository or raw file and place it into the cor
 
 ## Features
 
-- **Instant Re-orientation:** Anchors the returning user with an upfront **Mission Objective**, **Execution Status** (why work paused or stopped), and a live **Workspace Pulse** (git tree & background tasks).
-- **Strict Read-Only Execution:** Uses read-only commands (`git status`, `git diff`, directory inspection, task listings) to verify state without mutating code or configuration.
-- **High Candor & Grounding:** Zero fluff or cheerleading. Surfaces technical debt, brittle code, unverified assumptions, and regressions directly.
-- **Low-Friction Re-entry:** Numbers immediate next steps and accepts 1-character quick replies (`1`, `continue`) to resume work instantly.
+- **Instant Re-orientation:** Anchors the returning user with an upfront **Mission Objective**, **Execution Status** (why work paused or stopped), and a live **Workspace Pulse** (git tree, background tasks, and subagent jobs).
+- **Verification Confidence Badge:** Instant visual trust indicator (`🟢 TESTED & PASSING` | `🟡 UNVERIFIED DRAFT` | `🔴 FAILING / BROKEN`). Never assumes code works just because a file was edited.
+- **Fast-Triage Tool Protocol:** Sub-5 second execution. Uses lightweight queries (`git status -s`, `git diff --stat`) capped at 2–3 read calls. Never dumps thousands of lines of verbose diffs.
+- **Dynamic Blocker Promotion:** If the agent is `BLOCKED`, the roadblock and decision choices automatically jump to the very top.
+- **No-Change Short-Circuit:** If invoked with zero new state changes, returns a compact 4-line heartbeat card instead of a bloated empty template.
+- **Strict Read-Only Safety:** Strictly audits state without mutating files, running builds, or executing application code.
+- **Zero-Friction Re-entry:** Numbers immediate next actions so you can resume work by replying with a single character (`1` or `continue`).
 - **Structured 6-Part Briefing:**
   1. **Work Completed (While Away)**
   2. **Low Confidence & Revisit List**
