@@ -1,5 +1,7 @@
 # `sitrep` — Situational Report Skill
 
+Do you ever kick off a task in your AI Agent, come back hours later and wonder what the heck you were doing? Here's a solution.
+
 A lightweight, high-candor Situational Report (`sitrep`) workflow for AI coding assistants.
 
 When invoked via `/sitrep` (or upon asking for a status report), the assistant audits recent conversation history, diffs, artifacts, and workspace state to produce a dense, objective, read-only situational briefing.
