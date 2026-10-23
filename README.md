@@ -8,7 +8,7 @@ When invoked via `/sitrep` (or upon asking for a status report), the assistant a
 
 ---
 
-## ⚡ The Fastest Way: Just Ask Your Agent!
+## The Fastest Way: Just Ask Your Agent
 
 If you are already inside an AI coding assistant session, simply paste this prompt into the chat:
 
@@ -28,9 +28,9 @@ Any capable agent will read the repository or raw file and place it into the cor
 - **Chronological "While You Were Away" Timeline:** Tells the story of what happened while you stepped away rather than dumping a raw file table.
 - **Epistemic Integrity & Visual Receipts:** Badges embed verified command proofs inline (`🟢 TESTED & PASSING (via pytest • exit 0)` vs `🟡 UNVERIFIED DRAFT`). No fabricated percentages or unverified claims.
 - **Dynamic Decision Cards:** If `BLOCKED`, roadblocks jump to the very top formatted as interactive cards with 1-character selectors (`Reply 'A' or 'B'`).
-- **Progressive Silence:** When no issues exist, collapses empty sections into a single clean line (`✅ Health: No blockers, open bugs, or regressions detected`).
+- **Progressive Silence:** When no issues exist, collapses empty sections into a single clean line (`Health: No blockers, open bugs, or regressions detected`).
 - **Fast-Triage Tool Protocol:** Sub-5 second execution. Uses lightweight queries (`git status -s`, `git diff --stat`) capped at 2–3 read calls.
-- **No-Change Short-Circuit:** If invoked with zero new state changes, returns a compact 4-line heartbeat card.
+- **No-Change Short-Circuit:** If invoked with zero new state changes, returns a compact 5-line heartbeat card.
 - **Strict Read-Only Safety:** Strictly audits state without mutating files, running builds, or executing application code.
 - **Zero-Friction Re-entry:** Numbers immediate next actions so you can resume work by replying with a single character (`1` or `continue`).
 
@@ -46,7 +46,7 @@ Antigravity natively discovers skills in global configuration and workspace fold
 - **Windows (PowerShell):**
   ```powershell
   mkdir -Force "$HOME\.gemini\config\skills\sitrep"
-  curl -sSL "https://raw.githubusercontent.com/HeWhoRoams/sitrep/main/SKILL.md" -o "$HOME\.gemini\config\skills\sitrep\SKILL.md"
+  curl.exe -sSL "https://raw.githubusercontent.com/HeWhoRoams/sitrep/main/SKILL.md" -o "$HOME\.gemini\config\skills\sitrep\SKILL.md"
   ```
 - **macOS / Linux:**
   ```bash
